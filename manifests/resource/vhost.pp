@@ -99,7 +99,11 @@ define nginx::resource::vhost(
   }
 
   if ($locations != undef) {
-    create_resources('nginx::resource::location', $locations, { vhost => $name, index_files => [] })
+    create_resources('nginx::resource::location', $locations, {
+        vhost       => $name,
+        index_files => [],
+        protocol    => $protocol,
+    })
   }
 
   # Create plain file stubs
