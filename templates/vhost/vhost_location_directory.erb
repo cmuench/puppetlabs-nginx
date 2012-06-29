@@ -1,4 +1,4 @@
-location <%= location %> {
+  location <%= location %> {
     <% if www_root.to_s != 'undef' %>
     root  <%= www_root %>;
     <% end -%>
@@ -8,5 +8,17 @@ location <%= location %> {
 
     <% if try_files.to_s != 'undef' then %>
     try_files <% try_files.each do |try| -%> <%= try %> <% end -%>;
+    <% end %>
+
+    <% if location_options %>
+    <% location_options.each do |option, value| -%>
+    <% if value.kind_of?(Array) %>
+    <% value.each do |line| -%>
+    <%= option %> <%= line %>;
+    <% end %>
+    <% else %>
+    <%= option %> <%= value %>;
+    <% end %>
+    <% end %>
     <% end %>
   }

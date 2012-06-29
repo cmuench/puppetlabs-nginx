@@ -1,8 +1,8 @@
   location <%= location %> {
     <% if has_variable?("try_files") then %>
-    try_files <% try_files.each do |try| -%> <%= try %> <% end -%>; 
+    try_files <% try_files.each do |try| -%> <%= try %> <% end -%>;
     <% end %>
-    
+
     include <%= fastcgi_params %>;
     fastcgi_pass <%= fastcgi %>;
     <% unless fastcgi_script == :undef %>
