@@ -1,7 +1,4 @@
   location <%= location %> {
-    <% if has_variable?("try_files") then %>
-    try_files <% try_files.each do |try| -%> <%= try %> <% end -%>;
-    <% end %>
     proxy_pass <%= proxy %>;
     proxy_read_timeout <%= proxy_read_timeout %>;
     <%- if @proxy_headers -%>
@@ -10,3 +7,4 @@
     <%- end -%>
     <%- end -%>
   }
+
