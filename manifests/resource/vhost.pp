@@ -90,6 +90,7 @@ define nginx::resource::vhost(
     protocol           => $protocol,
     location           => '/',
     index_files        => $index_files,
+    www_root           => $www_root,
     proxy              => $proxy,
     proxy_read_timeout => $proxy_read_timeout,
     fastcgi            => $fastcgi,
