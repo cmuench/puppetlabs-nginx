@@ -1,17 +1,17 @@
-  location <%= location %> {
-    <% if www_root.to_s != 'undef' %>
-    root  <%= www_root %>;
+  location <%= scope['location'] %> {
+    <% if scope['www_root'].to_s != 'undef' %>
+    root  <%= scope['www_root'] %>;
     <% end -%>
-    <% if index_files.to_s != 'undef' and index_files != [] %>
-    index <% index_files.each do |i| %> <%= i %> <% end %>;
+    <% if scope['index_files'].to_s != 'undef' and scope['index_files'] != [] %>
+    index <% scope['index_files'].each do |i| %> <%= i %> <% end %>;
     <% end -%>
 
-    <% if try_files.to_s != 'undef' then %>
-    try_files <% try_files.each do |try| -%> <%= try %> <% end -%>;
+    <% if scope['try_files'].to_s != 'undef' then %>
+    try_files <% scope['try_files'].each do |try| -%> <%= try %> <% end -%>;
     <% end %>
 
-    <% if location_options %>
-    <% location_options.each do |option, value| -%>
+    <% if scope['location_options'] %>
+    <% scope['location_options'].each do |option, value| -%>
     <% if value.kind_of?(Array) %>
     <% value.each do |line| -%>
     <%= option %> <%= line %>;
